@@ -1,0 +1,65 @@
+body {
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
+input {
+    border: none;
+    outline: none;
+}
+#app {
+    position: relative;
+    min-height: 100vh;
+    padding: 0 20px;
+    background-color: #54BEFF;
+}
+
+.oreo-card {
+    max-width: 600px;
+    height: 500px;
+    margin: 0 auto;
+    padding-top: 60px;
+}
+.oreo-title {
+    margin: 10px 0;
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+    color: #fff;
+}
+.oreo-input .input{
+    box-sizing: border-box;
+    width: 100%;
+    margin: 15px 0;
+    padding: 9px 10px;
+    border-radius: 6px;
+    font-size: 14px;
+    line-height: 14px;
+    opacity: 0.8;
+    background-color: #fff;
+    color: #3b1d0b;
+}
+
+.oreo-input-btn-wrapper {
+    margin: 10px 0;
+    text-align: center;
+}
+.oreo-input-btn {
+    display: inline-block;
+    margin: 0 10px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    background-color: #fff;
+    box-shadow: 0 0 1px 1px #609dbb;
+}
+
+.oreo-btn_generateOreo {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 20px 0;
+    padding: 10px 10px;
+    border-radius: 6px;
+    text-align: center;
+    color: #fff;
+    background: #3b1d0b;
+}
