@@ -2,28 +2,50 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Oreoreo</title>
     <link href="css/oreoreo.css" rel="stylesheet" type="text/css">
+
 </head>
 <body>
 <div id="app">
-    <div class="oreo-card">
+    <div class="loading" v-show="loading">
+        <div class="loading-content">
+            <img src="image/oreo.png" class="loading-image">
+        </div>
+    </div>
+    <div class="oreo-card" v-show="!resultPage">
         <div class="oreo-title">
-            定制你的Oreo
+            定制你的奥利奥
         </div>
         <div class="oreo-input">
             <div class="input">
-                <span>我要一个 Oreoreo</span>
+                <span v-if="inputStr.length === 0" class="placeholder">我要一个奥利奥利奥...</span>
+                <span v-else>{{inputStr}}</span>
             </div>
         </div>
         <div class="oreo-input-btn-wrapper">
-            <div class="oreo-input-btn oreo-input-btn_addO">+O</div>
-            <div class="oreo-input-btn oreo-input-btn_addRe">+Re</div>
+            <div class="oreo-input-btn oreo-input-btn_addO" @click="addLayer('奥')">加奥</div>
+            <div class="oreo-input-btn oreo-input-btn_addRe" @click="addLayer('利')">加利</div>
+            <div class="oreo-input-btn oreo-input-btn_pop" @click="popLayer()">刮去一层</div>
         </div>
-        <div class="oreo-btn_generateOreo">制作</div>
+        <div class="oreo-btn_generateOreo" @click="generate">制作</div>
     </div>
+    <div class="oreo-result" v-show="this.resultPage">
+        <div class="oreo-title">这就是你要的奥利奥</div>
+        <div class="oreo-canvas-wrapper">
+            <canvas id="oreo-canvas" ref="oreoCanvas" width="300" height="320"></canvas>
+        </div>
+        <div class="oreo-input-btn-wrapper">
+            <div class="oreo-input-btn oreo-input-btn_save-image" @click="saveImage">保存图片</div>
+            <div class="oreo-input-btn oreo-input-btn_back" @click="back">返回</div>
+        </div>
+    </div>
+    <footer>
+        Crafted by lioder
+    </footer>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="js/oreoreo.js"></script>
