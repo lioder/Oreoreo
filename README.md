@@ -2,7 +2,7 @@
 
 🍪 一个沙雕的奥利奥定制生成器
 
-Go and have a try 👉
+Go and have a try 👉http://lioder.xyz/Oreoreo/
 
 ## Preview
 
