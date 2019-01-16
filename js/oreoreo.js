@@ -46,6 +46,9 @@ const app = new Vue({
         popLayer () {
             this.layerArr.pop();
         },
+        clearLayer () {
+            this.layerArr = [];
+        },
         generate () {
             if (this.layerArr.length <= 0) {
                 this._showTip("配方是空哒，试试点下加奥，可以增加一层巧克力，点下加利，可以增加一层奶油哦!");
@@ -99,6 +102,14 @@ const app = new Vue({
             a.href = imageUrl;
             a.download = '我的奥利奥.png';
             a.click();
+        },
+        playAudio () {
+            let playlist = [];
+            for (let layer of this.layerArr) {
+                if (layer === '奥') playlist.push(new Audio('./O.mov'));
+                else if (layer === '利') playlist.push(new Audio('./Re.mov'));
+            }
+            new CCAudioBuffer(playlist);
         },
         _showTip (msg, callback) {
             this.tipMessage = msg;
