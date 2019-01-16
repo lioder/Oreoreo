@@ -20,7 +20,9 @@ const app = new Vue({
     created: function () {
         this.loading = true;
         this.loadImages(imageMap, () => {
-            this.loading = false;
+            setTimeout(() => {
+                this.loading = false;
+            }, 1000)
         })
     },
     methods: {
