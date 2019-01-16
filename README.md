@@ -2,13 +2,11 @@
 
 🍪 一个沙雕的奥利奥定制生成器
 
-Go and have a try 👉
+Go and have a try 👉http://lioder.xyz/Oreoreo/
 
 ## Preview
 
-![](https://github.com/lioder/Oreoreo/raw/master/image/preview1)
-
-![](https://github.com/lioder/Oreoreo/raw/master/image/preview2)
+<img src="https://github.com/lioder/Oreoreo/raw/master/image/preview1" width="300"><img src="https://github.com/lioder/Oreoreo/raw/master/image/preview2" width="300">
 
 ## Usage
 
