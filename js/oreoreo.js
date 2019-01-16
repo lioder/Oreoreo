@@ -8,7 +8,9 @@ const app = new Vue({
     data: {
         layerArr: [],
         resultPage: false,
-        loading: true
+        loading: true,
+        showTip: false,
+        tipMessage: ''
     },
     computed: {
         inputStr: function () {
@@ -39,10 +41,14 @@ const app = new Vue({
         addLayer (layer) {
             this.layerArr.push(layer);
         },
-        popLayer(){
-          this.layerArr.pop();
+        popLayer () {
+            this.layerArr.pop();
         },
         generate () {
+            if (this.layerArr.length <= 0) {
+                this._showTip("配方是空哒，试试点下加奥，可以增加一层巧克力，点下加利，可以增加一层奶油哦!");
+                return;
+            }
             console.log('制作中...')
             this.loaing = true;
             let canvas = this.$refs.oreoCanvas;
@@ -55,26 +61,33 @@ const app = new Vue({
                 let layer = this.layerArr[i];
                 let image = imageMap.get(layer);
                 if (layer === '奥') {
-                    ctx.drawImage(image, 0, 28*i, 300, 210);
-                } else if (layer === '利'){
-                    ctx.drawImage(image, 10, 28*i, 280, 200);
+                    ctx.drawImage(image, 0, 28 * i, 300, 210);
+                } else if (layer === '利') {
+                    ctx.drawImage(image, 10, 28 * i, 280, 200);
                 }
             }
             this.resultPage = true;
             this.loaing = false;
         },
-        back() {
+        closeTip () {
+            this.showTip = false;
+        },
+        back () {
             this.loading = true;
             this.resultPage = false;
             this.loading = false;
         },
-        saveImage(){
+        saveImage () {
             let canvas = this.$refs.oreoCanvas;
             let imageUrl = canvas.toDataURL('image/png');
             let a = document.createElement('a');
             a.href = imageUrl;
             a.download = '我的奥利奥.png';
             a.click();
+        },
+        _showTip (msg) {
+            this.tipMessage = msg;
+            this.showTip = true;
         }
     }
 })

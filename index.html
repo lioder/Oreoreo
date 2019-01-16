@@ -16,6 +16,12 @@
             <img src="image/oreo.png" class="loading-image">
         </div>
     </div>
+    <div class="tip" v-show="showTip">
+        <div class="tip-content">
+            <div class="tip-message">{{tipMessage}}</div>
+            <div class="tip-btn_confirm" @click="closeTip">我去试试</div>
+        </div>
+    </div>
     <div class="oreo-card" v-show="!resultPage">
         <div class="oreo-title">
             定制你的奥利奥
