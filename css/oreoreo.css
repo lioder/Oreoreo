@@ -130,7 +130,7 @@ footer {
     justify-content: center;
     align-items: center;
     background: rgba(7, 17, 27, .8);
-    z-index: 100;
+    z-index: 10;
 }
 
 .tip-content {
