@@ -6,7 +6,7 @@ Go and have a try 👉http://lioder.xyz/Oreoreo/
 
 ## Preview
 
-<img src="https://github.com/lioder/Oreoreo/raw/master/image/preview1" width="300"><img src="https://github.com/lioder/Oreoreo/raw/master/image/preview2" width="300">
+<img src="https://github.com/lioder/Oreoreo/raw/master/image/preview1" width="300">      <img src="https://github.com/lioder/Oreoreo/raw/master/image/preview2" width="300">
 
 ## Usage
 
