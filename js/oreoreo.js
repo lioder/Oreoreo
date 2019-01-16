@@ -52,7 +52,7 @@ const app = new Vue({
                 return;
             }
             console.log('制作中...')
-            this.loaing = true;
+            this.loading = true;
             let canvas = this.$refs.oreoCanvas;
             let ctx = canvas.getContext("2d");
             // modify canvas height
@@ -68,8 +68,17 @@ const app = new Vue({
                     ctx.drawImage(image, 10, 28 * i, 280, 200);
                 }
             }
-            this.resultPage = true;
-            this.loaing = false;
+
+            let imageUrl = canvas.toDataURL('image/png');
+            let oreoImage = this.$refs.oreoImage;
+            oreoImage.src = imageUrl;
+            oreoImage.onload = () => {
+                setTimeout(() => {
+                    this.resultPage = true;
+                    this.loading = false;
+                }, 1000)
+
+            }
         },
         closeTip () {
             this.showTip = false;
@@ -80,16 +89,24 @@ const app = new Vue({
             this.loading = false;
         },
         saveImage () {
-            let canvas = this.$refs.oreoCanvas;
-            let imageUrl = canvas.toDataURL('image/png');
+            if (this._isIOS()) {
+                this._showTip("请长按图片保存")
+                return;
+            }
+            let oreoImage = this.$refs.oreoImage;
+            let imageUrl = oreoImage.src;
             let a = document.createElement('a');
             a.href = imageUrl;
             a.download = '我的奥利奥.png';
             a.click();
         },
-        _showTip (msg) {
+        _showTip (msg, callback) {
             this.tipMessage = msg;
             this.showTip = true;
+        },
+        _isIOS: function () {
+            let userAgent = navigator.userAgent;
+            return !!userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)
         }
     }
 })

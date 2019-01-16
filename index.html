@@ -52,7 +52,8 @@
     <div class="oreo-result" v-show="this.resultPage">
         <div class="oreo-title">这就是你要的奥利奥</div>
         <div class="oreo-canvas-wrapper">
-            <canvas id="oreo-canvas" ref="oreoCanvas" width="300" height="320"></canvas>
+            <canvas id="oreo-canvas" ref="oreoCanvas" width="300" height="320" v-show="false"></canvas>
+            <image id="oreo-image" ref="oreoImage" width="300"></image>
         </div>
         <div class="oreo-input-btn-wrapper">
             <div class="oreo-input-btn oreo-input-btn_save-image" @click="saveImage">保存图片</div>
