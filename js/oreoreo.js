@@ -23,21 +23,11 @@ const app = new Vue({
     },
     created: function () {
         this.loading = true;
-        let imagePromise = new Promise((resolve) => {
-            this.loadImages(imageMap, () => {
-                resolve();
-            })
-        })
-        let audioPromise = new Promise((resolve => {
-            // this.loadAudios(audioMap, () => {
-                resolve();
-            // })
-        }))
-        Promise.all([imagePromise, audioPromise]).then(() => {
+        this.loadImages(imageMap, () => {
             setTimeout(() => {
                 this.loading = false;
             }, 1000)
-        });
+        })
     },
     methods: {
         loadImages (imageMap, callback) {
@@ -53,13 +43,6 @@ const app = new Vue({
                 }
                 image.src = source;
             }
-        },
-        loadAudios (audioMap, callback) {
-            for (let [audioKey, source] of audioMap.entries()) {
-                let audio = new Audio(source);
-                audioMap.set(audioKey, audio)
-            }
-            callback();
         },
         addLayer (layer) {
             this.layerArr.push(layer);
@@ -97,12 +80,6 @@ const app = new Vue({
             let oreoImage = this.$refs.oreoImage;
             oreoImage.src = imageUrl;
 
-            // generate audio playlist
-            this.playlist = [];
-            for (let layer of this.layerArr) {
-                this.playlist.push(new Audio(audioMap.get(layer)));
-            }
-
             oreoImage.onload = () => {
                 setTimeout(() => {
                     this.resultPage = true;
@@ -129,9 +106,6 @@ const app = new Vue({
             a.href = imageUrl;
             a.download = '我的奥利奥.png';
             a.click();
-        },
-        playAudio () {
-            new CCAudioBuffer(this.playlist);
         },
         _showTip (msg, callback) {
             this.tipMessage = msg;
